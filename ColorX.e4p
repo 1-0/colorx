@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project ColorX -->
+<!-- Saved: 2009-06-16, 16:34:20 -->
+<!-- Copyright (C) 2009 10, 1_0@list.ru -->
+<Project version="4.6">
+  <Language>en</Language>
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Other</ProjectType>
+  <Description>color manipulating program</Description>
+  <Version>0.1</Version>
+  <Author>10</Author>
+  <Email>1_0@list.ru</Email>
+  <Sources>
+    <Source>ColorX.py</Source>
+    <Source>colorx_convert.py</Source>
+    <Source>ColorX_ui.py</Source>
+    <Source>colorx_unittest.py</Source>
+    <Source>colorx_namer.py</Source>
+  </Sources>
+  <Forms>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Resources>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <MainScript>ColorX.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+  </FiletypeAssociations>
+</Project>
