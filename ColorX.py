@@ -9,7 +9,7 @@
  The 'main' function is reserved.
 """
 
-from Tkinter import *
+from tkinter import *
 from ColorX_ui import ColorX
 
 # BEGIN USER CODE global
@@ -51,7 +51,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(self._spinbox_1.get(),  self._spinbox_2.get(),  self._spinbox_3.get())
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_9["text"]= color_name_new[1]
-        self._label_11["text"]= unicode(color_name_new[2])
+        self._label_11["text"]= str(color_name_new[2])
         
         self._label_9["bg"]='#'+str(color_name_new[0])
         self._label_9["fg"]=contrast_color(self._label_9["bg"])
@@ -78,7 +78,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(self._spinbox_4.get(),  self._spinbox_5.get(),  self._spinbox_6.get())
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_10["text"]= color_name_new[1]
-        self._label_12["text"]= unicode(color_name_new[2])
+        self._label_12["text"]= str(color_name_new[2])
         
         self._label_10["bg"]='#'+str(color_name_new[0])
         self._label_10["fg"]=contrast_color(self._label_10["bg"])
@@ -105,7 +105,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_11["text"]= color_name_new[1]
-        self._label_9["text"]= unicode(color_name_new[2])
+        self._label_9["text"]= str(color_name_new[2])
         
         self._label_11["bg"]='#'+str(color_name_new[0])
         self._label_11["fg"]=contrast_color(self._label_11["bg"])
@@ -133,7 +133,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_10["text"]= color_name_new[1]
-        self._label_12["text"]= unicode(color_name_new[2])
+        self._label_12["text"]= str(color_name_new[2])
         
         self._label_10["bg"]='#'+str(color_name_new[0])
         self._label_10["fg"]=contrast_color(self._label_10["bg"])
@@ -159,7 +159,7 @@ class CustomColorX(ColorX):
 
         color_name_new=name_select_sql_rgb(mixed_color[0],  mixed_color[1],  mixed_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_7["text"]= color_name_new[1]+"\n\n"+unicode(color_name_new[2])
+        self._label_7["text"]= color_name_new[1]+"\n\n"+str(color_name_new[2])
         
         
         self._label_7["bg"]='#'+str(color_name_new[0])
@@ -187,7 +187,7 @@ class CustomColorX(ColorX):
         #color_name_new=name_select_sql_hsv(self._spinbox_10.get(),  self._spinbox_11.get(), self._spinbox_12.get())
         color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_8["text"]= color_name_new[1]+"\n\n"+unicode(color_name_new[2])
+        self._label_8["text"]= color_name_new[1]+"\n\n"+str(color_name_new[2])
         
         
         self._label_8["bg"]='#'+str(color_name_new[0])
@@ -216,7 +216,7 @@ class CustomColorX(ColorX):
         #color_name_new=name_select_sql_hsv(self._spinbox_10.get(),  self._spinbox_11.get(), self._spinbox_12.get())
         color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_17["text"]= color_name_new[1]+"\n\n"+unicode(color_name_new[2])
+        self._label_17["text"]= color_name_new[1]+"\n\n"+str(color_name_new[2])
         
         self._label_17["bg"]='#'+str(color_name_new[0])
         self._label_17["fg"]=contrast_color(self._label_17["bg"])
@@ -244,7 +244,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(self._spinbox_1.get(),  self._spinbox_2.get(),  self._spinbox_3.get())
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_9["text"]= color_name_new[1]
-        self._label_13["text"]= unicode(color_name_new[2])
+        self._label_13["text"]= str(color_name_new[2])
 
         
         self._label_9["bg"]='#'+str(color_name_new[0])
@@ -274,7 +274,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(self._spinbox_4.get(),  self._spinbox_5.get(),  self._spinbox_6.get())
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_10["text"]= color_name_new[1]
-        self._label_15["text"]= unicode(color_name_new[2])
+        self._label_15["text"]= str(color_name_new[2])
  
         
         self._label_10["bg"]='#'+str(color_name_new[0])
@@ -305,7 +305,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_11["text"]= color_name_new[1]
-        self._label_13["text"]= unicode(color_name_new[2])
+        self._label_13["text"]= str(color_name_new[2])
 
         
         self._label_11["bg"]='#'+str(color_name_new[0])
@@ -336,7 +336,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_12["text"]= color_name_new[1]
-        self._label_15["text"]= unicode(color_name_new[2])
+        self._label_15["text"]= str(color_name_new[2])
 
         
         self._label_12["bg"]='#'+str(color_name_new[0])
@@ -366,7 +366,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_13["text"]= color_name_new[1]
-        self._label_11["text"]= unicode(color_name_new[2])
+        self._label_11["text"]= str(color_name_new[2])
 
         
         self._label_13["bg"]='#'+str(color_name_new[0])
@@ -395,7 +395,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_13["text"]= color_name_new[1]
-        self._label_9["text"]= unicode(color_name_new[2])
+        self._label_9["text"]= str(color_name_new[2])
 
         
         self._label_13["bg"]='#'+str(color_name_new[0])
@@ -425,7 +425,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_15["text"]= color_name_new[1]
-        self._label_12["text"]= unicode(color_name_new[2])
+        self._label_12["text"]= str(color_name_new[2])
 
         
         self._label_15["bg"]='#'+str(color_name_new[0])
@@ -454,7 +454,7 @@ class CustomColorX(ColorX):
         color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
         #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
         self._label_15["text"]= color_name_new[1]
-        self._label_10["text"]= unicode(color_name_new[2])
+        self._label_10["text"]= str(color_name_new[2])
 
         
         self._label_15["bg"]='#'+str(color_name_new[0])

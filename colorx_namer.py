@@ -43,14 +43,14 @@ def name_select_sql_hsv(h_part, s_part, v_part):
             #print 'N-d---', new_distance_xyz
             nearest_color_name_eng=str(nearest_color_name_eng)+";\n"+str(row[1])+" <<"+str(new_h_part)+", "+str(new_s_part)+", "+str(new_v_part)+">>"
             color_rgb=row[2]
-            nearest_color_name_ru=unicode(nearest_color_name_ru)+";\n"+unicode(row[6])+" <<"+str(color_rgb)+">>"
+            nearest_color_name_ru=str(nearest_color_name_ru)+";\n"+str(row[6])+" <<"+str(color_rgb)+">>"
         elif float(new_distance_xyz)<float(distance_xyz):
             distance_xyz=new_distance_xyz
             nearest_color_name_eng=str(row[1])+" <<"+str(new_h_part)+", "+str(new_s_part)+", "+str(new_v_part)+">>"
             color_rgb=row[2]
             #ru_name=row[6]
             #ru_name =  unicode(ru_name,'utf-8')
-            nearest_color_name_ru=unicode(row[6])+" <<"+str(color_rgb)+">>"
+            nearest_color_name_ru=str(row[6])+" <<"+str(color_rgb)+">>"
           
     cursor.close()
     connection.close()
@@ -87,12 +87,12 @@ def name_select_sql_rgb(r_part, g_part, b_part):
             nearest_color_name_eng=str(nearest_color_name_eng)+";\n"+str(row[1])+" <<"+str(row[3])+", "+str(row[4])+", "+str(row[5])+">>"
 #             nearest_color_name_eng=str(nearest_color_name_eng)+";\n"+str(row[1])+" <<"+str(row[3])+", "+str(row[4])+", "+str(row[5])+">>"
             color_rgb=new_rgb
-            nearest_color_name_ru=unicode(nearest_color_name_ru)+";\n"+unicode(row[6])+" <<"+str(color_rgb)+">>"
+            nearest_color_name_ru=str(nearest_color_name_ru)+";\n"+str(row[6])+" <<"+str(color_rgb)+">>"
         elif float(new_distance_rgb)<float(distance_rgb):
             distance_rgb=new_distance_rgb
             nearest_color_name_eng= str(row[1])+" <<"+str(new_rgb)+">>"
             color_rgb=new_rgb
-            nearest_color_name_ru=unicode(row[6])+" <<"+str(color_rgb)+">>"
+            nearest_color_name_ru=str(row[6])+" <<"+str(color_rgb)+">>"
             #ru_name=unicode(row[6])+" ("+str(color_rgb)+")"
             #nearest_color_name_ru=unicode(ru_name)+" ("+str(color_rgb)+")"
    
