@@ -11,6 +11,7 @@
 
 
 from tkinter import *
+from gettext import gettext as _
 from ColorX import CustomColorX
 
 
@@ -19,17 +20,9 @@ def quit(self, *args):
 
 
 def main():
-    # try: 
-    #     userinit()
-    # except NameError: 
-    #     pass
     root = Tk()
     demo = CustomColorX(root)
-    root.title('ColorX')
-    # try: 
-    #     run()
-    # except NameError: 
-    #     pass
+    root.title(_('ColorX'))
     root.protocol('WM_DELETE_WINDOW', root.quit)
     root.mainloop()
 

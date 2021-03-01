@@ -7,6 +7,7 @@ The associated callback file should be modified instead.
 """
 
 from tkinter import *
+from gettext import gettext as _
 from ColorX_ui import ColorX
 
 # BEGIN USER CODE global
@@ -25,436 +26,280 @@ class CustomColorX(ColorX):
     # Callback to handle _button_1 widget option -command
     def _button_1_command(self, *args):
 
-#        tkMessageBox._show("Windows Title","This is the description",icon=tkMessageBox.INFO,type=tkMessageBox.OK)
+#        tkMessageBox._show("Windows Title","This is the description",icon = tkMessageBox.INFO,type = tkMessageBox.OK)
 
+        new_color = convert_rgb_to_hsv(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get())
 
-#        self._label_1["bg"]=rgb_color_to_hex(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get())
-        #print "Convert RGB 1 to HSV 1"
-        #print self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get()
-        new_color=convert_rgb_to_hsv(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get())
-        #print "New HVS1 color:"
-        #print new_color
-        self._spinbox_7["values"]=new_color[0]
-        self._spinbox_8["values"]=new_color[1]
-        self._spinbox_9["values"]=new_color[2]
-        self._label_3["bg"]=self._label_1["bg"]
-        self._label_3["fg"]=contrast_color(self._label_3["bg"])
+        self._spinbox_7["values"] = new_color[0]
+        self._spinbox_8["values"] = new_color[1]
+        self._spinbox_9["values"] = new_color[2]
+        self._label_3["bg"] = self._label_1["bg"]
+        self._label_3["fg"] = contrast_color(self._label_3["bg"])
+        color_name_new = name_select_sql_rgb(self._spinbox_1.get(),  self._spinbox_2.get(),  self._spinbox_3.get())
+        self._label_9["text"] =  color_name_new[1]
+        self._label_11["text"] =  str(color_name_new[2])
         
-        color_name_new=name_select_sql_rgb(self._spinbox_1.get(),  self._spinbox_2.get(),  self._spinbox_3.get())
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_9["text"]= color_name_new[1]
-        self._label_11["text"]= str(color_name_new[2])
-        
-        self._label_9["bg"]='#'+str(color_name_new[0])
-        self._label_9["fg"]=contrast_color(self._label_9["bg"])
-        self._label_11["bg"]=self._label_9["bg"]
-        self._label_11["fg"]=self._label_9["fg"]
-        
-        pass
+        self._label_9["bg"] = '#' + str(color_name_new[0])
+        self._label_9["fg"] = contrast_color(self._label_9["bg"])
+        self._label_11["bg"] = self._label_9["bg"]
+        self._label_11["fg"] = self._label_9["fg"]
 
     # _button_2_command --
     #
     # Callback to handle _button_2 widget option -command
     def _button_2_command(self, *args):
-        #print "Convert RGB 2 to HSV 2"
-        #print self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get()
-        new_color=convert_rgb_to_hsv(self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get())
-        #print "New HVS2 color:"
-        #print new_color
-        self._spinbox_10["values"]=new_color[0]
-        self._spinbox_11["values"]=new_color[1]
-        self._spinbox_12["values"]=new_color[2]
-        self._label_4["bg"]=self._label_2["bg"]
-        self._label_4["fg"]=contrast_color(self._label_4["bg"])
+        new_color = convert_rgb_to_hsv(self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get())
+        self._spinbox_10["values"] = new_color[0]
+        self._spinbox_11["values"] = new_color[1]
+        self._spinbox_12["values"] = new_color[2]
+        self._label_4["bg"] = self._label_2["bg"]
+        self._label_4["fg"] = contrast_color(self._label_4["bg"])
+        color_name_new = name_select_sql_rgb(self._spinbox_4.get(),  self._spinbox_5.get(),  self._spinbox_6.get())
+        self._label_10["text"] =  color_name_new[1]
+        self._label_12["text"] =  str(color_name_new[2])
         
-        color_name_new=name_select_sql_rgb(self._spinbox_4.get(),  self._spinbox_5.get(),  self._spinbox_6.get())
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_10["text"]= color_name_new[1]
-        self._label_12["text"]= str(color_name_new[2])
-        
-        self._label_10["bg"]='#'+str(color_name_new[0])
-        self._label_10["fg"]=contrast_color(self._label_10["bg"])
-        self._label_12["bg"]=self._label_10["bg"]
-        self._label_12["fg"]=self._label_10["fg"]
-        
-        pass
+        self._label_10["bg"] = '#' + str(color_name_new[0])
+        self._label_10["fg"] = contrast_color(self._label_10["bg"])
+        self._label_12["bg"] = self._label_10["bg"]
+        self._label_12["fg"] = self._label_10["fg"]
 
     # _button_3_command --
     #
     # Callback to handle _button_3 widget option -command
     def _button_3_command(self, *args):
-        #print "Convert HSV 1 to RGB 1"
-        #print self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get()
-        new_color=convert_hsv_to_rgb(self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get())
-        #print "New RGB1 color:"
-        #print new_color
-        self._spinbox_1["values"]=new_color[0]
-        self._spinbox_2["values"]=new_color[1]
-        self._spinbox_3["values"]=new_color[2]
-        self._label_1["bg"]=self._label_3["bg"]
-        self._label_1["fg"]=contrast_color(self._label_1["bg"])
-        
-        color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_11["text"]= color_name_new[1]
-        self._label_9["text"]= str(color_name_new[2])
-        
-        self._label_11["bg"]='#'+str(color_name_new[0])
-        self._label_11["fg"]=contrast_color(self._label_11["bg"])
-        self._label_9["bg"]=self._label_11["bg"]
-        self._label_9["fg"]=self._label_11["fg"]
-        
-        pass
+        new_color = convert_hsv_to_rgb(self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get())
+        self._spinbox_1["values"] = new_color[0]
+        self._spinbox_2["values"] = new_color[1]
+        self._spinbox_3["values"] = new_color[2]
+        self._label_1["bg"] = self._label_3["bg"]
+        self._label_1["fg"] = contrast_color(self._label_1["bg"])
+        color_name_new = name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
+        self._label_11["text"] =  color_name_new[1]
+        self._label_9["text"] =  str(color_name_new[2])
+        self._label_11["bg"] = '#' + str(color_name_new[0])
+        self._label_11["fg"] = contrast_color(self._label_11["bg"])
+        self._label_9["bg"] = self._label_11["bg"]
+        self._label_9["fg"] = self._label_11["fg"]
 
     # _button_4_command --
     #
     # Callback to handle _button_4 widget option -command
     def _button_4_command(self, *args):
-        #print "Convert HSV 2 to RGB 2"
-        #print self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get()
-        new_color=convert_hsv_to_rgb(self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get())
-        #print "New RGB2 color:"
-        #print new_color
-        self._spinbox_4["values"]=new_color[0]
-        self._spinbox_5["values"]=new_color[1]
-        self._spinbox_6["values"]=new_color[2]
-        self._label_2["bg"]=self._label_4["bg"]
-        self._label_2["fg"]=contrast_color(self._label_2["bg"])
-        
-        #color_name_new=name_select_sql_hsv(self._spinbox_10.get(),  self._spinbox_11.get(), self._spinbox_12.get())
-        color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_10["text"]= color_name_new[1]
-        self._label_12["text"]= str(color_name_new[2])
-        
-        self._label_10["bg"]='#'+str(color_name_new[0])
-        self._label_10["fg"]=contrast_color(self._label_10["bg"])
-        self._label_12["bg"]=self._label_10["bg"]
-        self._label_12["fg"]=self._label_10["fg"]
-        
-        pass
+        new_color = convert_hsv_to_rgb(self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get())
+        self._spinbox_4["values"] = new_color[0]
+        self._spinbox_5["values"] = new_color[1]
+        self._spinbox_6["values"] = new_color[2]
+        self._label_2["bg"] = self._label_4["bg"]
+        self._label_2["fg"] = contrast_color(self._label_2["bg"])
+        color_name_new = name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
+        self._label_10["text"] =  color_name_new[1]
+        self._label_12["text"] =  str(color_name_new[2])
+        self._label_10["bg"] = '#' + str(color_name_new[0])
+        self._label_10["fg"] = contrast_color(self._label_10["bg"])
+        self._label_12["bg"] = self._label_10["bg"]
+        self._label_12["fg"] = self._label_10["fg"]
 
     # _button_5_command --
     #
     # Callback to handle _button_5 widget option -command
     def _button_5_command(self, *args):
-        #print "Mix RGB 1 and RGB 2"
-        #print  self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get() , '+', self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get()
-        mixed_color=mix_colors(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get() , self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get())
-        #print "Mixed RGB color is"
-        #print  mixed_color
-        self._spinbox_13["values"]=mixed_color[0]
-        self._spinbox_14["values"]=mixed_color[1]
-        self._spinbox_15["values"]=mixed_color[2]
-        self._label_5["bg"]=rgb_color_to_hex(mixed_color[0], mixed_color[1], mixed_color[2])
-        self._label_5["fg"]=contrast_color(self._label_5["bg"])
-
-        color_name_new=name_select_sql_rgb(mixed_color[0],  mixed_color[1],  mixed_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_7["text"]= color_name_new[1]+"\n\n"+str(color_name_new[2])
-        
-        
-        self._label_7["bg"]='#'+str(color_name_new[0])
-        self._label_7["fg"]=contrast_color(self._label_7["bg"])
-        
-        pass
+        mixed_color = mix_colors(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get() , self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get())
+        self._spinbox_13["values"] = mixed_color[0]
+        self._spinbox_14["values"] = mixed_color[1]
+        self._spinbox_15["values"] = mixed_color[2]
+        self._label_5["bg"] = rgb_color_to_hex(mixed_color[0], mixed_color[1], mixed_color[2])
+        self._label_5["fg"] = contrast_color(self._label_5["bg"])
+        color_name_new = name_select_sql_rgb(mixed_color[0],  mixed_color[1],  mixed_color[2])
+        self._label_7["text"] =  color_name_new[1] + "\n\n" + str(color_name_new[2])
+        self._label_7["bg"] = '#' + str(color_name_new[0])
+        self._label_7["fg"] = contrast_color(self._label_7["bg"])
 
     # _button_6_command --
     #
     # Callback to handle _button_6 widget option -command
     def _button_6_command(self, *args):
-        #print "Mix HSV 1 and HSV 2"
-        #print  self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get() , '+', self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get()
-        mixed_color=mix_hsv_colors(self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get() , self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get())
-        #print "Mixed HSV color is"
-        #print  mixed_color
-        self._spinbox_16["values"]=mixed_color[0]
-        self._spinbox_17["values"]=mixed_color[1]
-        self._spinbox_18["values"]=mixed_color[2]
-        new_rgb_color=convert_hsv_to_rgb(mixed_color[0], mixed_color[1], mixed_color[2])
-        self._label_6["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_6["fg"]=contrast_color(self._label_6["bg"])
-        
-        
-        #color_name_new=name_select_sql_hsv(self._spinbox_10.get(),  self._spinbox_11.get(), self._spinbox_12.get())
-        color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_8["text"]= color_name_new[1]+"\n\n"+str(color_name_new[2])
-        
-        
-        self._label_8["bg"]='#'+str(color_name_new[0])
-        self._label_8["fg"]=contrast_color(self._label_8["bg"])
-        
-        pass
+        mixed_color = mix_hsv_colors(self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get() , self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get())
+        self._spinbox_16["values"] = mixed_color[0]
+        self._spinbox_17["values"] = mixed_color[1]
+        self._spinbox_18["values"] = mixed_color[2]
+        new_rgb_color = convert_hsv_to_rgb(mixed_color[0], mixed_color[1], mixed_color[2])
+        self._label_6["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_6["fg"] = contrast_color(self._label_6["bg"])
+        color_name_new = name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_8["text"] =  color_name_new[1] + "\n\n" + str(color_name_new[2])
+        self._label_8["bg"] = '#' + str(color_name_new[0])
+        self._label_8["fg"] = contrast_color(self._label_8["bg"])
 
     # _button_7_command --
     #
     # Callback to handle _button_7 widget option -command
     def _button_7_command(self, *args):
-        #print "Mix CMYK 1 and CMYK 2"
-        #print  self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get() , self._spinbox_22.get() , '+', self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get()
-        mixed_color=mix_cmyk_colors(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get() , self._spinbox_22.get(), self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
-        #print "Mixed HSV color is"
-        #print  mixed_color
-        self._spinbox_27["values"]=mixed_color[0]
-        self._spinbox_28["values"]=mixed_color[1]
-        self._spinbox_29["values"]=mixed_color[2]
-        self._spinbox_30["values"]=mixed_color[3]
-        new_rgb_color=convert_cmyk_to_rgb(mixed_color[0], mixed_color[1], mixed_color[2], mixed_color[3])
-        #print rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_18["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_18["fg"]=contrast_color(self._label_18["bg"])
-        
-        #color_name_new=name_select_sql_hsv(self._spinbox_10.get(),  self._spinbox_11.get(), self._spinbox_12.get())
-        color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_17["text"]= color_name_new[1]+"\n\n"+str(color_name_new[2])
-        
-        self._label_17["bg"]='#'+str(color_name_new[0])
-        self._label_17["fg"]=contrast_color(self._label_17["bg"])
-        
-        
-        pass
+        mixed_color = mix_cmyk_colors(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get() , self._spinbox_22.get(), self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        self._spinbox_27["values"] = mixed_color[0]
+        self._spinbox_28["values"] = mixed_color[1]
+        self._spinbox_29["values"] = mixed_color[2]
+        self._spinbox_30["values"] = mixed_color[3]
+        new_rgb_color = convert_cmyk_to_rgb(mixed_color[0], mixed_color[1], mixed_color[2], mixed_color[3])
+        self._label_18["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_18["fg"] = contrast_color(self._label_18["bg"])
+        color_name_new = name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_17["text"] =  color_name_new[1] + "\n\n" + str(color_name_new[2])
+        self._label_17["bg"] = '#' + str(color_name_new[0])
+        self._label_17["fg"] = contrast_color(self._label_17["bg"])
 
     # _button_9_command --
     #
     # Callback to handle _button_9 widget option -command
     def _button_9_command(self, *args):
-        #print "Convert RGB 1 to CMYK 1"
-        #print self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get()
-        new_color=convert_rgb_to_cmyk(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get())
-        #print "New CMYK1 color:"
-        #print new_color
-        self._spinbox_19["values"]=new_color[0]
-        self._spinbox_20["values"]=new_color[1]
-        self._spinbox_21["values"]=new_color[2]
-        self._spinbox_22["values"]=new_color[3]
-        new_rgb_color=convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
-        self._label_14["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_14["fg"]=contrast_color(self._label_14["bg"])
-        
-        color_name_new=name_select_sql_rgb(self._spinbox_1.get(),  self._spinbox_2.get(),  self._spinbox_3.get())
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_9["text"]= color_name_new[1]
-        self._label_13["text"]= str(color_name_new[2])
-
-        
-        self._label_9["bg"]='#'+str(color_name_new[0])
-        self._label_9["fg"]=contrast_color(self._label_9["bg"])
-        self._label_13["bg"]=self._label_9["bg"]
-        self._label_13["fg"]=self._label_9["fg"]
-        
-        pass
+        new_color = convert_rgb_to_cmyk(self._spinbox_1.get(), self._spinbox_2.get(), self._spinbox_3.get())
+        self._spinbox_19["values"] = new_color[0]
+        self._spinbox_20["values"] = new_color[1]
+        self._spinbox_21["values"] = new_color[2]
+        self._spinbox_22["values"] = new_color[3]
+        new_rgb_color = convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
+        self._label_14["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_14["fg"] = contrast_color(self._label_14["bg"])
+        color_name_new = name_select_sql_rgb(self._spinbox_1.get(),  self._spinbox_2.get(),  self._spinbox_3.get())
+        self._label_9["text"] =  color_name_new[1]
+        self._label_13["text"] =  str(color_name_new[2])
+        self._label_9["bg"] = '#' + str(color_name_new[0])
+        self._label_9["fg"] = contrast_color(self._label_9["bg"])
+        self._label_13["bg"] = self._label_9["bg"]
+        self._label_13["fg"] = self._label_9["fg"]
 
     # _button_10_command --
     #
     # Callback to handle _button_10 widget option -command
     def _button_10_command(self, *args):
-        #print "Convert RGB 2 to CMYK 2"
-        #print self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get()
-        new_color=convert_rgb_to_cmyk(self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get())
-        #print "New CMYK2 color:"
-        #print new_color
-        self._spinbox_23["values"]=new_color[0]
-        self._spinbox_24["values"]=new_color[1]
-        self._spinbox_25["values"]=new_color[2]
-        self._spinbox_26["values"]=new_color[3]
-        new_rgb_color=convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
-        self._label_16["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_16["fg"]=contrast_color(self._label_16["bg"])
-        
-        color_name_new=name_select_sql_rgb(self._spinbox_4.get(),  self._spinbox_5.get(),  self._spinbox_6.get())
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_10["text"]= color_name_new[1]
-        self._label_15["text"]= str(color_name_new[2])
- 
-        
-        self._label_10["bg"]='#'+str(color_name_new[0])
-        self._label_10["fg"]=contrast_color(self._label_10["bg"])
-        self._label_15["bg"]=self._label_10["bg"]
-        self._label_15["fg"]=self._label_10["fg"]
-        
-        pass
+        new_color = convert_rgb_to_cmyk(self._spinbox_4.get(), self._spinbox_5.get(), self._spinbox_6.get())
+        self._spinbox_23["values"] = new_color[0]
+        self._spinbox_24["values"] = new_color[1]
+        self._spinbox_25["values"] = new_color[2]
+        self._spinbox_26["values"] = new_color[3]
+        new_rgb_color = convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
+        self._label_16["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_16["fg"] = contrast_color(self._label_16["bg"])
+        color_name_new = name_select_sql_rgb(self._spinbox_4.get(),  self._spinbox_5.get(),  self._spinbox_6.get())
+        self._label_10["text"] =  color_name_new[1]
+        self._label_15["text"] =  str(color_name_new[2])
+        self._label_10["bg"] = '#' + str(color_name_new[0])
+        self._label_10["fg"] = contrast_color(self._label_10["bg"])
+        self._label_15["bg"] = self._label_10["bg"]
+        self._label_15["fg"] = self._label_10["fg"]
 
     # _button_11_command --
     #
     # Callback to handle _button_11 widget option -command
     def _button_11_command(self, *args):
-        #print "Convert HSV 1 to CMYK 1"
-        #print self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get()
-        new_color=convert_hsv_to_cmyk(self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get())
-        #print "New CMYK 1 color:"
-        #print new_color
-        self._spinbox_19["values"]=new_color[0]
-        self._spinbox_20["values"]=new_color[1]
-        self._spinbox_21["values"]=new_color[2]
-        self._spinbox_22["values"]=new_color[3]
-        new_rgb_color=convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
-        self._label_14["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_14["fg"]=contrast_color(self._label_14["bg"])
-        
-                
-        color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_11["text"]= color_name_new[1]
-        self._label_13["text"]= str(color_name_new[2])
-
-        
-        self._label_11["bg"]='#'+str(color_name_new[0])
-        self._label_11["fg"]=contrast_color(self._label_11["bg"])
-        self._label_13["bg"]=self._label_11["bg"]
-        self._label_13["fg"]=self._label_11["fg"]
-        
-        pass
+        new_color = convert_hsv_to_cmyk(self._spinbox_7.get(), self._spinbox_8.get(), self._spinbox_9.get())
+        self._spinbox_19["values"] = new_color[0]
+        self._spinbox_20["values"] = new_color[1]
+        self._spinbox_21["values"] = new_color[2]
+        self._spinbox_22["values"] = new_color[3]
+        new_rgb_color = convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
+        self._label_14["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_14["fg"] = contrast_color(self._label_14["bg"])
+        color_name_new = name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_11["text"] =  color_name_new[1]
+        self._label_13["text"] =  str(color_name_new[2])
+        self._label_11["bg"] = '#' + str(color_name_new[0])
+        self._label_11["fg"] = contrast_color(self._label_11["bg"])
+        self._label_13["bg"] = self._label_11["bg"]
+        self._label_13["fg"] = self._label_11["fg"]
 
     # _button_12_command --
     #
     # Callback to handle _button_12 widget option -command
     def _button_12_command(self, *args):
-        #print "Convert HSV 2 to CMYK 2"
-        #print self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get()
-        new_color=convert_hsv_to_cmyk(self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get())
-        #print "New CMYK 2 color:"
-        #print new_color
-        self._spinbox_23["values"]=new_color[0]
-        self._spinbox_24["values"]=new_color[1]
-        self._spinbox_25["values"]=new_color[2]
-        self._spinbox_26["values"]=new_color[3]
-        new_rgb_color=convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
-        self._label_16["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_16["fg"]=contrast_color(self._label_16["bg"])
-        
-                        
-        color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_12["text"]= color_name_new[1]
-        self._label_15["text"]= str(color_name_new[2])
-
-        
-        self._label_12["bg"]='#'+str(color_name_new[0])
-        self._label_12["fg"]=contrast_color(self._label_12["bg"])
-        self._label_15["bg"]=self._label_12["bg"]
-        self._label_15["fg"]=self._label_12["fg"]
-        
-        pass
+        new_color = convert_hsv_to_cmyk(self._spinbox_10.get(), self._spinbox_11.get(), self._spinbox_12.get())
+        self._spinbox_23["values"] = new_color[0]
+        self._spinbox_24["values"] = new_color[1]
+        self._spinbox_25["values"] = new_color[2]
+        self._spinbox_26["values"] = new_color[3]
+        new_rgb_color = convert_cmyk_to_rgb(new_color[0], new_color[1], new_color[2], new_color[3])
+        self._label_16["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_16["fg"] = contrast_color(self._label_16["bg"])
+        color_name_new = name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_12["text"] =  color_name_new[1]
+        self._label_15["text"] =  str(color_name_new[2])
+        self._label_12["bg"] = '#' + str(color_name_new[0])
+        self._label_12["fg"] = contrast_color(self._label_12["bg"])
+        self._label_15["bg"] = self._label_12["bg"]
+        self._label_15["fg"] = self._label_12["fg"]
 
     # _button_13_command --
     #
     # Callback to handle _button_13 widget option -command
     def _button_13_command(self, *args):
-        #print "Convert CMYK 1 to HSV 1"
-        #print self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get()
-        new_color=convert_cmyk_to_hsv(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
-        #print "New HSV 1 color:"
-        #print new_color
-        self._spinbox_7["values"]=new_color[0]
-        self._spinbox_8["values"]=new_color[1]
-        self._spinbox_9["values"]=new_color[2]
-        new_rgb_color=convert_hsv_to_rgb(new_color[0], new_color[1], new_color[2])
-        self._label_3["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_3["fg"]=contrast_color(self._label_3["bg"])
-        
-                        
-        color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_13["text"]= color_name_new[1]
-        self._label_11["text"]= str(color_name_new[2])
-
-        
-        self._label_13["bg"]='#'+str(color_name_new[0])
-        self._label_13["fg"]=contrast_color(self._label_13["bg"])
-        self._label_11["bg"]=self._label_13["bg"]
-        self._label_11["fg"]=self._label_13["fg"]
-        
-        pass
+        new_color = convert_cmyk_to_hsv(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
+        self._spinbox_7["values"] = new_color[0]
+        self._spinbox_8["values"] = new_color[1]
+        self._spinbox_9["values"] = new_color[2]
+        new_rgb_color = convert_hsv_to_rgb(new_color[0], new_color[1], new_color[2])
+        self._label_3["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_3["fg"] = contrast_color(self._label_3["bg"])
+        color_name_new = name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_13["text"] =  color_name_new[1]
+        self._label_11["text"] =  str(color_name_new[2])
+        self._label_13["bg"] = '#' + str(color_name_new[0])
+        self._label_13["fg"] = contrast_color(self._label_13["bg"])
+        self._label_11["bg"] = self._label_13["bg"]
+        self._label_11["fg"] = self._label_13["fg"]
 
     # _button_14_command --
     #
     # Callback to handle _button_14 widget option -command
     def _button_14_command(self, *args):
-        #print "Convert CMYK 1 to RGB 1"
-        #print self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get()
-        new_color=convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
-        #print "New RGB1 color:"
-        #print new_color
-        self._spinbox_1["values"]=new_color[0]
-        self._spinbox_2["values"]=new_color[1]
-        self._spinbox_3["values"]=new_color[2]
-        self._label_1["bg"]=rgb_color_to_hex(new_color[0], new_color[1], new_color[2])
-        self._label_1["fg"]=contrast_color(self._label_1["bg"])
-        
-                        
-        color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_13["text"]= color_name_new[1]
-        self._label_9["text"]= str(color_name_new[2])
-
-        
-        self._label_13["bg"]='#'+str(color_name_new[0])
-        self._label_13["fg"]=contrast_color(self._label_13["bg"])
-        self._label_9["bg"]=self._label_13["bg"]
-        self._label_9["fg"]=self._label_13["fg"]
-        
-        pass
+        new_color = convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
+        self._spinbox_1["values"] = new_color[0]
+        self._spinbox_2["values"] = new_color[1]
+        self._spinbox_3["values"] = new_color[2]
+        self._label_1["bg"] = rgb_color_to_hex(new_color[0], new_color[1], new_color[2])
+        self._label_1["fg"] = contrast_color(self._label_1["bg"])
+        color_name_new = name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
+        self._label_13["text"] =  color_name_new[1]
+        self._label_9["text"] =  str(color_name_new[2])
+        self._label_13["bg"] = '#' + str(color_name_new[0])
+        self._label_13["fg"] = contrast_color(self._label_13["bg"])
+        self._label_9["bg"] = self._label_13["bg"]
+        self._label_9["fg"] = self._label_13["fg"]
 
     # _button_15_command --
     #
     # Callback to handle _button_15 widget option -command
     def _button_15_command(self, *args):
-        #print "Convert CMYK 2 to HSV 2"
-        #print self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get()
-        new_color=convert_cmyk_to_hsv(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
-        #print "New HSV2 color:"
-        #print new_color
-        self._spinbox_10["values"]=new_color[0]
-        self._spinbox_11["values"]=new_color[1]
-        self._spinbox_12["values"]=new_color[2]
-        new_rgb_color=convert_hsv_to_rgb(new_color[0], new_color[1], new_color[2])
-        self._label_4["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_4["fg"]=contrast_color(self._label_4["bg"])
-        
-                        
-        color_name_new=name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_15["text"]= color_name_new[1]
-        self._label_12["text"]= str(color_name_new[2])
-
-        
-        self._label_15["bg"]='#'+str(color_name_new[0])
-        self._label_15["fg"]=contrast_color(self._label_15["bg"])
-        self._label_12["bg"]=self._label_15["bg"]
-        self._label_12["fg"]=self._label_15["fg"]
-        
-        pass
+        new_color = convert_cmyk_to_hsv(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        self._spinbox_10["values"] = new_color[0]
+        self._spinbox_11["values"] = new_color[1]
+        self._spinbox_12["values"] = new_color[2]
+        new_rgb_color = convert_hsv_to_rgb(new_color[0], new_color[1], new_color[2])
+        self._label_4["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_4["fg"] = contrast_color(self._label_4["bg"])
+        color_name_new = name_select_sql_rgb(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_15["text"] =  color_name_new[1]
+        self._label_12["text"] =  str(color_name_new[2])
+        self._label_15["bg"] = '#' + str(color_name_new[0])
+        self._label_15["fg"] = contrast_color(self._label_15["bg"])
+        self._label_12["bg"] = self._label_15["bg"]
+        self._label_12["fg"] = self._label_15["fg"]
 
     # _button_16_command --
     #
     # Callback to handle _button_16 widget option -command
     def _button_16_command(self, *args):
-        #print "Convert CMYK 2 to RGB 2"
-        #print self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get()
-        new_color=convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
-        #print "New RGB2 color:"
-        #print new_color
-        self._spinbox_4["values"]=new_color[0]
-        self._spinbox_5["values"]=new_color[1]
-        self._spinbox_6["values"]=new_color[2]
-        self._label_2["bg"]=rgb_color_to_hex(new_color[0], new_color[1], new_color[2])
-        self._label_2["fg"]=contrast_color(self._label_2["bg"])
-        
-                        
-        color_name_new=name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
-        #print color_name_new[0],'\n',color_name_new[1],'\n',unicode(color_name_new[2])
-        self._label_15["text"]= color_name_new[1]
-        self._label_10["text"]= str(color_name_new[2])
-
-        
-        self._label_15["bg"]='#'+str(color_name_new[0])
-        self._label_15["fg"]=contrast_color(self._label_15["bg"])
-        self._label_10["bg"]=self._label_15["bg"]
-        self._label_10["fg"]=self._label_15["fg"]
-        
-        pass
+        new_color = convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        self._spinbox_4["values"] = new_color[0]
+        self._spinbox_5["values"] = new_color[1]
+        self._spinbox_6["values"] = new_color[2]
+        self._label_2["bg"] = rgb_color_to_hex(new_color[0], new_color[1], new_color[2])
+        self._label_2["fg"] = contrast_color(self._label_2["bg"])
+        color_name_new = name_select_sql_rgb(new_color[0], new_color[1], new_color[2])
+        self._label_15["text"] =  color_name_new[1]
+        self._label_10["text"] =  str(color_name_new[2])
+        self._label_15["bg"] = '#' + str(color_name_new[0])
+        self._label_15["fg"] = contrast_color(self._label_15["bg"])
+        self._label_10["bg"] = self._label_15["bg"]
+        self._label_10["fg"] = self._label_15["fg"]
 
     # _spinbox_1_command --
     #
@@ -478,12 +323,11 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_1 widget option -xscrollcommand
     def _spinbox_1_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_1.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_1["values"]=new_col
-        self._label_1["bg"]=rgb_color_to_hex(int(self._spinbox_1.get()), int(self._spinbox_2.get()), int(self._spinbox_3.get()))
-        self._label_1["fg"]=contrast_color(self._label_1["bg"])
-        pass
+        new_col = validate_color_value(self._spinbox_1.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_1["values"] = new_col
+        self._label_1["bg"] = rgb_color_to_hex(int(self._spinbox_1.get()), int(self._spinbox_2.get()), int(self._spinbox_3.get()))
+        self._label_1["fg"] = contrast_color(self._label_1["bg"])
 
     # _spinbox_2_command --
     #
@@ -507,12 +351,11 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_2 widget option -xscrollcommand
     def _spinbox_2_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_2.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_2["values"]=new_col
-        self._label_1["bg"]=rgb_color_to_hex(int(self._spinbox_1.get()), int(self._spinbox_2.get()), int(self._spinbox_3.get()))
-        self._label_1["fg"]=contrast_color(self._label_1["bg"])
-        pass
+        new_col = validate_color_value(self._spinbox_2.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_2["values"] = new_col
+        self._label_1["bg"] = rgb_color_to_hex(int(self._spinbox_1.get()), int(self._spinbox_2.get()), int(self._spinbox_3.get()))
+        self._label_1["fg"] = contrast_color(self._label_1["bg"])
 
     # _spinbox_3_command --
     #
@@ -536,12 +379,11 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_3 widget option -xscrollcommand
     def _spinbox_3_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_3.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_3["values"]=new_col
-        self._label_1["bg"]=rgb_color_to_hex(int(self._spinbox_1.get()), int(self._spinbox_2.get()), int(self._spinbox_3.get()))
-        self._label_1["fg"]=contrast_color(self._label_1["bg"])
-        pass
+        new_col = validate_color_value(self._spinbox_3.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_3["values"] = new_col
+        self._label_1["bg"] = rgb_color_to_hex(int(self._spinbox_1.get()), int(self._spinbox_2.get()), int(self._spinbox_3.get()))
+        self._label_1["fg"] = contrast_color(self._label_1["bg"])
 
     # _spinbox_4_command --
     #
@@ -565,12 +407,11 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_4 widget option -xscrollcommand
     def _spinbox_4_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_4.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_4["values"]=new_col
-        self._label_2["bg"]=rgb_color_to_hex(int(self._spinbox_4.get()), int(self._spinbox_5.get()), int(self._spinbox_6.get()))
-        self._label_2["fg"]=contrast_color(self._label_2["bg"])
-        pass
+        new_col = validate_color_value(self._spinbox_4.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_4["values"] = new_col
+        self._label_2["bg"] = rgb_color_to_hex(int(self._spinbox_4.get()), int(self._spinbox_5.get()), int(self._spinbox_6.get()))
+        self._label_2["fg"] = contrast_color(self._label_2["bg"])
 
     # _spinbox_5_command --
     #
@@ -594,12 +435,11 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_5 widget option -xscrollcommand
     def _spinbox_5_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_5.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_5["values"]=new_col
-        self._label_2["bg"]=rgb_color_to_hex(int(self._spinbox_4.get()), int(self._spinbox_5.get()), int(self._spinbox_6.get()))
-        self._label_2["fg"]=contrast_color(self._label_2["bg"])
-        pass
+        new_col = validate_color_value(self._spinbox_5.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_5["values"] = new_col
+        self._label_2["bg"] = rgb_color_to_hex(int(self._spinbox_4.get()), int(self._spinbox_5.get()), int(self._spinbox_6.get()))
+        self._label_2["fg"] = contrast_color(self._label_2["bg"])
 
     # _spinbox_6_command --
     #
@@ -623,12 +463,11 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_6 widget option -xscrollcommand
     def _spinbox_6_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_6.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_6["values"]=new_col
-        self._label_2["bg"]=rgb_color_to_hex(int(self._spinbox_4.get()), int(self._spinbox_5.get()), int(self._spinbox_6.get()))
-        self._label_2["fg"]=contrast_color(self._label_2["bg"])
-        pass
+        new_col = validate_color_value(self._spinbox_6.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_6["values"] = new_col
+        self._label_2["bg"] = rgb_color_to_hex(int(self._spinbox_4.get()), int(self._spinbox_5.get()), int(self._spinbox_6.get()))
+        self._label_2["fg"] = contrast_color(self._label_2["bg"])
 
     # _spinbox_7_command --
     #
@@ -652,14 +491,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_7 widget option -xscrollcommand
     def _spinbox_7_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_7.get(),0,359)
-        if  (new_col==-1)==False:
-            self._spinbox_7["values"]=new_col
-        new_rgb_color=convert_hsv_to_rgb(int(self._spinbox_7.get()), int(self._spinbox_8.get()), int(self._spinbox_9.get()))
+        new_col = validate_color_value(self._spinbox_7.get(),0,359)
+        if  (new_col == -1) == False:
+            self._spinbox_7["values"] = new_col
+        new_rgb_color = convert_hsv_to_rgb(int(self._spinbox_7.get()), int(self._spinbox_8.get()), int(self._spinbox_9.get()))
         #print new_rgb_color
-        self._label_3["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_3["fg"]=contrast_color(self._label_3["bg"])
-        pass
+        self._label_3["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_3["fg"] = contrast_color(self._label_3["bg"])
 
     # _spinbox_8_command --
     #
@@ -683,14 +521,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_8 widget option -xscrollcommand
     def _spinbox_8_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_8.get(),0,100)
-        if  (new_col==-1)==False:
-            self._spinbox_8["values"]=new_col
-        new_rgb_color=convert_hsv_to_rgb(int(self._spinbox_7.get()), int(self._spinbox_8.get()), int(self._spinbox_9.get()))
+        new_col = validate_color_value(self._spinbox_8.get(),0,100)
+        if  (new_col == -1) == False:
+            self._spinbox_8["values"] = new_col
+        new_rgb_color = convert_hsv_to_rgb(int(self._spinbox_7.get()), int(self._spinbox_8.get()), int(self._spinbox_9.get()))
         #print new_rgb_color
-        self._label_3["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_3["fg"]=contrast_color(self._label_3["bg"])
-        pass
+        self._label_3["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_3["fg"] = contrast_color(self._label_3["bg"])
 
     # _spinbox_9_command --
     #
@@ -714,14 +551,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_9 widget option -xscrollcommand
     def _spinbox_9_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_9.get(),0,100)
-        if  (new_col==-1)==False:
-            self._spinbox_9["values"]=new_col
-        new_rgb_color=convert_hsv_to_rgb(int(self._spinbox_7.get()), int(self._spinbox_8.get()), int(self._spinbox_9.get()))
+        new_col = validate_color_value(self._spinbox_9.get(),0,100)
+        if  (new_col == -1) == False:
+            self._spinbox_9["values"] = new_col
+        new_rgb_color = convert_hsv_to_rgb(int(self._spinbox_7.get()), int(self._spinbox_8.get()), int(self._spinbox_9.get()))
         #print new_rgb_color
-        self._label_3["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_3["fg"]=contrast_color(self._label_3["bg"])
-        pass
+        self._label_3["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_3["fg"] = contrast_color(self._label_3["bg"])
 
     # _spinbox_10_command --
     #
@@ -745,14 +581,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_10 widget option -xscrollcommand
     def _spinbox_10_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_10.get(),0,359)
-        if  (new_col==-1)==False:
-            self._spinbox_10["values"]=new_col
-        new_rgb_color=convert_hsv_to_rgb(int(self._spinbox_10.get()), int(self._spinbox_11.get()), int(self._spinbox_12.get()))
+        new_col = validate_color_value(self._spinbox_10.get(),0,359)
+        if  (new_col == -1) == False:
+            self._spinbox_10["values"] = new_col
+        new_rgb_color = convert_hsv_to_rgb(int(self._spinbox_10.get()), int(self._spinbox_11.get()), int(self._spinbox_12.get()))
         #print new_rgb_color
-        self._label_4["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_4["fg"]=contrast_color(self._label_4["bg"])
-        pass
+        self._label_4["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_4["fg"] = contrast_color(self._label_4["bg"])
 
     # _spinbox_11_command --
     #
@@ -776,14 +611,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_11 widget option -xscrollcommand
     def _spinbox_11_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_11.get(),0,100)
-        if  (new_col==-1)==False:
-            self._spinbox_11["values"]=new_col
-        new_rgb_color=convert_hsv_to_rgb(int(self._spinbox_10.get()), int(self._spinbox_11.get()), int(self._spinbox_12.get()))
+        new_col = validate_color_value(self._spinbox_11.get(),0,100)
+        if  (new_col == -1) == False:
+            self._spinbox_11["values"] = new_col
+        new_rgb_color = convert_hsv_to_rgb(int(self._spinbox_10.get()), int(self._spinbox_11.get()), int(self._spinbox_12.get()))
         #print new_rgb_color
-        self._label_4["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_4["fg"]=contrast_color(self._label_4["bg"])
-        pass
+        self._label_4["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_4["fg"] = contrast_color(self._label_4["bg"])
 
     # _spinbox_12_command --
     #
@@ -807,14 +641,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_12 widget option -xscrollcommand
     def _spinbox_12_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_12.get(),0,100)
-        if  (new_col==-1)==False:
-            self._spinbox_12["values"]=new_col
-        new_rgb_color=convert_hsv_to_rgb(int(self._spinbox_10.get()), int(self._spinbox_11.get()), int(self._spinbox_12.get()))
+        new_col = validate_color_value(self._spinbox_12.get(),0,100)
+        if  (new_col == -1) == False:
+            self._spinbox_12["values"] = new_col
+        new_rgb_color = convert_hsv_to_rgb(int(self._spinbox_10.get()), int(self._spinbox_11.get()), int(self._spinbox_12.get()))
         #print new_rgb_color
-        self._label_4["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_4["fg"]=contrast_color(self._label_4["bg"])
-        pass
+        self._label_4["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_4["fg"] = contrast_color(self._label_4["bg"])
 
     # _spinbox_13_command --
     #
@@ -982,14 +815,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_19 widget option -xscrollcommand
     def _spinbox_19_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_19.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_19["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
+        new_col = validate_color_value(self._spinbox_19.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_19["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
         #print new_rgb_color
-        self._label_14["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_14["fg"]=contrast_color(self._label_14["bg"])
-        pass
+        self._label_14["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_14["fg"] = contrast_color(self._label_14["bg"])
 
     # _spinbox_20_command --
     #
@@ -1013,14 +845,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_20 widget option -xscrollcommand
     def _spinbox_20_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_20.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_20["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
+        new_col = validate_color_value(self._spinbox_20.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_20["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
         #print new_rgb_color
-        self._label_14["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_14["fg"]=contrast_color(self._label_14["bg"])
-        pass
+        self._label_14["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_14["fg"] = contrast_color(self._label_14["bg"])
 
     # _spinbox_21_command --
     #
@@ -1044,14 +875,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_21 widget option -xscrollcommand
     def _spinbox_21_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_21.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_21["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
+        new_col = validate_color_value(self._spinbox_21.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_21["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
         #print new_rgb_color
-        self._label_14["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_14["fg"]=contrast_color(self._label_14["bg"])
-        pass
+        self._label_14["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_14["fg"] = contrast_color(self._label_14["bg"])
 
     # _spinbox_22_command --
     #
@@ -1075,14 +905,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_22 widget option -xscrollcommand
     def _spinbox_22_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_22.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_22["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
+        new_col = validate_color_value(self._spinbox_22.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_22["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_19.get(), self._spinbox_20.get(), self._spinbox_21.get(), self._spinbox_22.get())
         #print new_rgb_color
-        self._label_14["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_14["fg"]=contrast_color(self._label_14["bg"])
-        pass
+        self._label_14["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_14["fg"] = contrast_color(self._label_14["bg"])
 
     # _spinbox_23_command --
     #
@@ -1106,14 +935,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_23 widget option -xscrollcommand
     def _spinbox_23_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_23.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_23["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        new_col = validate_color_value(self._spinbox_23.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_23["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
         #print new_rgb_color
-        self._label_16["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_16["fg"]=contrast_color(self._label_16["bg"])
-        pass
+        self._label_16["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_16["fg"] = contrast_color(self._label_16["bg"])
 
     # _spinbox_24_command --
     #
@@ -1137,14 +965,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_24 widget option -xscrollcommand
     def _spinbox_24_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_24.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_24["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        new_col = validate_color_value(self._spinbox_24.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_24["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
         #print new_rgb_color
-        self._label_16["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_16["fg"]=contrast_color(self._label_16["bg"])
-        pass
+        self._label_16["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_16["fg"] = contrast_color(self._label_16["bg"])
 
     # _spinbox_25_command --
     #
@@ -1168,14 +995,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_25 widget option -xscrollcommand
     def _spinbox_25_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_25.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_25["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        new_col = validate_color_value(self._spinbox_25.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_25["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
         #print new_rgb_color
-        self._label_16["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_16["fg"]=contrast_color(self._label_16["bg"])
-        pass
+        self._label_16["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_16["fg"] = contrast_color(self._label_16["bg"])
 
     # _spinbox_26_command --
     #
@@ -1199,14 +1025,13 @@ class CustomColorX(ColorX):
     #
     # Callback to handle _spinbox_26 widget option -xscrollcommand
     def _spinbox_26_xscrollcommand(self, *args):
-        new_col=validate_color_value(self._spinbox_26.get(),0,255)
-        if  (new_col==-1)==False:
-            self._spinbox_26["values"]=new_col
-        new_rgb_color=convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
+        new_col = validate_color_value(self._spinbox_26.get(),0,255)
+        if  (new_col == -1) == False:
+            self._spinbox_26["values"] = new_col
+        new_rgb_color = convert_cmyk_to_rgb(self._spinbox_23.get(), self._spinbox_24.get(), self._spinbox_25.get(), self._spinbox_26.get())
         #print new_rgb_color
-        self._label_16["bg"]=rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
-        self._label_16["fg"]=contrast_color(self._label_16["bg"])
-        pass
+        self._label_16["bg"] = rgb_color_to_hex(new_rgb_color[0], new_rgb_color[1], new_rgb_color[2])
+        self._label_16["fg"] = contrast_color(self._label_16["bg"])
 
     # _spinbox_27_command --
     #

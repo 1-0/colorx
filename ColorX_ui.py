@@ -7,7 +7,8 @@ The associated callback file should be modified instead.
 """
 
 import tkinter
-import os # needed for relative image paths
+from gettext import gettext as _
+import os  # needed for relative image paths
 
 # Using new-style classes: create empty base class object
 # for compatibility with older python interps
@@ -55,25 +56,25 @@ class ColorX(object):
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Color RGB-1",
+            text = _("Color RGB-1"),
         )
         self._label_2 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Color RGB-2",
+            text = _("Color RGB-2"),
         )
         self._label_3 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Color HSV-1",
+            text = _("Color HSV-1"),
         )
         self._label_4 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Color HSV-2",
+            text = _("Color HSV-2"),
         )
         self._spinbox_1 = tkinter.Spinbox(self._frame_1,
             to = 255,
@@ -88,7 +89,7 @@ class ColorX(object):
             width = 3,
         )
         self._button_1 = tkinter.Button(self._frame_15,
-            text = "Convert to HSV-1",
+            text = _("Convert to HSV-1"),
         )
         self._spinbox_4 = tkinter.Spinbox(self._frame_2,
             to = 255,
@@ -103,13 +104,13 @@ class ColorX(object):
             width = 3,
         )
         self._button_2 = tkinter.Button(self._frame_16,
-            text = "Convert to HSV-2",
+            text = _("Convert to HSV-2"),
         )
         self._label_5 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Mixed color RGB",
+            text = _("Mixed color RGB"),
         )
         self._spinbox_7 = tkinter.Spinbox(self._frame_3,
             to = 359,
@@ -124,7 +125,7 @@ class ColorX(object):
             width = 3,
         )
         self._button_3 = tkinter.Button(self._frame_17,
-            text = "Convert  to RGB-1",
+            text = _("Convert  to RGB-1"),
         )
         self._spinbox_10 = tkinter.Spinbox(self._frame_4,
             to = 359,
@@ -139,31 +140,31 @@ class ColorX(object):
             width = 3,
         )
         self._button_4 = tkinter.Button(self._frame_18,
-            text = "Convert to RGB-2",
+            text = _("Convert to RGB-2"),
         )
         self._label_6 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Mixed color HSV",
+            text = _("Mixed color HSV"),
         )
         self._label_7 = tkinter.Label(root,
-            text = "Color RGB mix name",
+            text = _("Color RGB mix name"),
         )
         self._label_8 = tkinter.Label(root,
-            text = "Color HSV mix name",
+            text = _("Color HSV mix name"),
         )
         self._label_9 = tkinter.Label(root,
-            text = "Color RGB-1 name",
+            text = _("Color RGB-1 name"),
         )
         self._label_10 = tkinter.Label(root,
-            text = "Color RGB-2 name",
+            text = _("Color RGB-2 name"),
         )
         self._label_11 = tkinter.Label(root,
-            text = "Color HSV-1 name",
+            text = _("Color HSV-1 name"),
         )
         self._label_12 = tkinter.Label(root,
-            text = "Color HSV-2 name",
+            text = _("Color HSV-2 name"),
         )
         self._spinbox_13 = tkinter.Spinbox(self._frame_5,
             state = "readonly",
@@ -199,25 +200,25 @@ class ColorX(object):
             width = 3,
         )
         self._button_6 = tkinter.Button(root,
-            text = "Mix HSV colors",
+            text = _("Mix HSV colors"),
         )
         self._label_13 = tkinter.Label(root,
-            text = "Color CMYK-1 name",
+            text = _("Color CMYK-1 name"),
         )
         self._label_14 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Color CMYK-1",
+            text = _("Color CMYK-1"),
         )
         self._label_15 = tkinter.Label(root,
-            text = "Color CMYK-2 name",
+            text = _("Color CMYK-2 name"),
         )
         self._label_16 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Color CMYK-2",
+            text = _("Color CMYK-2"),
         )
         self._spinbox_19 = tkinter.Spinbox(self._frame_21,
             to = 255,
@@ -275,40 +276,40 @@ class ColorX(object):
             width = 3,
         )
         self._label_17 = tkinter.Label(root,
-            text = "Color CMYK mix name",
+            text = _("Color CMYK mix name"),
         )
         self._label_18 = tkinter.Label(root,
             activeforeground = "#ffffff",
             font = "Arial 10 bold",
             foreground = "#ffffff",
-            text = "Mixed color CMYK",
+            text = _("Mixed color CMYK"),
         )
         self._button_7 = tkinter.Button(root,
-            text = "Mix CMYK colors",
+            text = _("Mix CMYK colors"),
         )
         self._button_9 = tkinter.Button(self._frame_15,
-            text = "Convert to CMYK-1",
+            text = _("Convert to CMYK-1"),
         )
         self._button_10 = tkinter.Button(self._frame_16,
-            text = "Convert to CMYK-2",
+            text = _("Convert to CMYK-2"),
         )
         self._button_11 = tkinter.Button(self._frame_17,
-            text = "Convert to CMYK-1",
+            text = _("Convert to CMYK-1"),
         )
         self._button_12 = tkinter.Button(self._frame_18,
-            text = "Convert to CMYK-2",
+            text = _("Convert to CMYK-2"),
         )
         self._button_13 = tkinter.Button(self._frame_25,
-            text = "Convert to HSV-1",
+            text = _("Convert to HSV-1"),
         )
         self._button_14 = tkinter.Button(self._frame_25,
-            text = "Convert to RGB-1",
+            text = _("Convert to RGB-1"),
         )
         self._button_15 = tkinter.Button(self._frame_26,
-            text = "Convert to HSV-2",
+            text = _("Convert to HSV-2"),
         )
         self._button_16 = tkinter.Button(self._frame_26,
-            text = "Convert to RGB-2",
+            text = _("Convert to RGB-2"),
         )
 
         # widget commands
